@@ -1,12 +1,16 @@
-import React, { useRef } from 'react';
 import './App.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import CustomInput from './components/CustomInput/CustomInput';
+
+const queryClient = new QueryClient();
 
 function App() {
-  const inputRef = useRef<HTMLInputElement | null>(null);
   return (
-    <div className='App'>
-      <input ref={inputRef} />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className='App'>
+        <CustomInput />
+      </div>
+    </QueryClientProvider>
   );
 }
 
