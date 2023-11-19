@@ -15,7 +15,9 @@ import {
   SortableHandle,
   SortEndHandler,
 } from 'react-sortable-hoc';
+
 import { SelectOptionType, useOptionsStore } from '../../hooks/optionsStore';
+
 import './CustomInput.css';
 
 type OptionType = {
@@ -26,7 +28,7 @@ type OptionType = {
 };
 
 const SortableMultiValue = SortableElement((props: MultiValueProps<SelectOptionType, true>) => {
-  const onMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
+  const onMouseDown: MouseEventHandler<HTMLDivElement> = e => {
     e.preventDefault();
     e.stopPropagation();
   };
@@ -47,9 +49,9 @@ const CustomInput = () => {
   const selectRef = useRef<any>(null);
   const { options, mutateOptions } = useOptionsStore();
   const { isLoading, error, data } = useQuery<OptionType[], Error>('optionsData', () =>
-    fetch('https://652f91320b8d8ddac0b2b62b.mockapi.io/autocomplete').then((response) => response.json())
+    fetch('https://652f91320b8d8ddac0b2b62b.mockapi.io/autocomplete').then(response => response.json()),
   );
-  const dataForSelect = data?.map((item) => {
+  const dataForSelect = data?.map(item => {
     return { value: item.value.toString(), label: item.name };
   });
 
@@ -72,7 +74,7 @@ const CustomInput = () => {
     if (input) {
       if (option.label.toLowerCase().includes(input.toLowerCase())) return true;
       if (
-        options.some((opt) => {
+        options.some(opt => {
           if (opt.value === option.value) return true;
           else return false;
         })
@@ -86,7 +88,7 @@ const CustomInput = () => {
   return (
     <SortableSelect
       ref={selectRef}
-      className='SelectContainer'
+      className="SelectContainer"
       useDragHandle
       onSortEnd={onSortEnd}
       distance={4}
