@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useRef, useState } from 'react';
+import React, { MouseEventHandler, useRef } from 'react';
 import { useQuery } from 'react-query';
 import Select, {
   components,
@@ -43,7 +43,7 @@ const SortableMultiValueLabel = SortableHandle((props: MultiValueGenericProps<Se
 )) as React.ComponentType<MultiValueGenericProps<SelectOptionType, true, GroupBase<SelectOptionType>>>;
 
 const CustomInput = () => {
-  const [startSearch, setStartSearch] = useState<boolean>(false);
+  // const [startSearch, setStartSearch] = useState<boolean>(false);
   const selectRef = useRef<any>(null);
   const { options, mutateOptions } = useOptionsStore();
   const { isLoading, error, data } = useQuery<OptionType[], Error>('optionsData', () =>
@@ -101,7 +101,7 @@ const CustomInput = () => {
       }}
       filterOption={filterOption}
       openMenuOnClick={false}
-      menuIsOpen={startSearch}
+      // menuIsOpen={startSearch}
     />
   );
 };
