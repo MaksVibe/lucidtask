@@ -11,7 +11,7 @@ export type OptionsStoreTypes = {
   mutateOptions: (options: SelectOptionType[]) => void;
 };
 
-export const useOptionsStore = create<OptionsStoreTypes>((set) => ({
+export const useOptionsStore = create<OptionsStoreTypes>(set => ({
   options: [],
-  mutateOptions: (options) => set((state) => ({ options: options })),
+  mutateOptions: options => set(() => ({ options: options })),
 }));

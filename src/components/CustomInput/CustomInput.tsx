@@ -7,6 +7,7 @@ import Select, {
   MultiValueProps,
   OnChangeValue,
   Props,
+  SelectInstance,
 } from 'react-select';
 import {
   SortableContainer,
@@ -46,7 +47,7 @@ const SortableMultiValueLabel = SortableHandle((props: MultiValueGenericProps<Se
 
 const CustomInput = () => {
   // const [startSearch, setStartSearch] = useState<boolean>(false);
-  const selectRef = useRef<any>(null);
+  const selectRef = useRef<SelectInstance<SelectOptionType, true, GroupBase<SelectOptionType>>>(null);
   const { options, mutateOptions } = useOptionsStore();
   const { isLoading, error, data } = useQuery<OptionType[], Error>('optionsData', () =>
     fetch('https://652f91320b8d8ddac0b2b62b.mockapi.io/autocomplete').then(response => response.json()),
